@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="http://prismlibrary.com" xmlns:Views="clr-namespace:Recycle.Views"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  x:Class="Recycle.Views.HomeMasterDetailPage"
+                  NavigationPage.HasNavigationBar="False"
+                  x:Name="MasterPage">
+
+    <FlyoutPage.Flyout>
+        <NavigationPage Title="Menu"
+                        IconImageSource="ic_hamburger.png">
+           
+            <x:Arguments>
+                <ContentPage NavigationPage.HasBackButton="False"
+                             Title="Menu"
+                             Padding="0">
+                    <Grid RowDefinitions="*,auto">
+                        <StackLayout Margin="10">
+
+                            <!--Plastics-->
+                            <StackLayout >
+                                <Label Text="Glasses"
+                                       Style="{StaticResource MenuItemLabelStyle}"/>
+                                
+                                <BoxView Style="{StaticResource BoxViewSeparatorStyle}"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference MasterPage}, Path=BindingContext.MenuItemClickCommand}"
+                                                          NumberOfTapsRequired="1"
+                                                          CommandParameter="Glasses"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+
+                            <!--Glasses-->
+                            <StackLayout>
+                                <Label Text="Plastic"
+                                       Style="{StaticResource MenuItemLabelStyle}"/>
+                                
+                                <BoxView Style="{StaticResource BoxViewSeparatorStyle}"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference MasterPage}, Path=BindingContext.MenuItemClickCommand}"
+                                                          NumberOfTapsRequired="1"
+                                                          CommandParameter="Plastics"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+
+                            <!--Metals-->
+                            <StackLayout>
+                                <Label Text="Metals"
+                                       Style="{StaticResource MenuItemLabelStyle}"/>
+                                <BoxView Style="{StaticResource BoxViewSeparatorStyle}"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference MasterPage}, Path=BindingContext.MenuItemClickCommand}"
+                                                          NumberOfTapsRequired="1"
+                                                          CommandParameter="Metals"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+
+                </ContentPage>
+            </x:Arguments>
+
+        </NavigationPage>
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <Views:MainPage/>
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+
+</FlyoutPage>
